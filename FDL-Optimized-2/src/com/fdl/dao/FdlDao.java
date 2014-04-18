@@ -25,7 +25,10 @@ public class FdlDao extends HibernateDaoSupport{
 	
 	
 	//private static String OUTPUT_FOLDER = "/home/zakaria/Bureau/PhD/test-folder";
-	private static String OUTPUT_FOLDER = "/home/zakaria/outputfolder";
+	
+	private static String USER_HOME = System.getProperty("user.home");
+	private static String OUTPUT_FOLDER = USER_HOME + "/outputfolder";
+	//private static String OUTPUT_FOLDER = "/home/zakaria/outputfolder";
 
 	public Graph getGraph2(){
 		//getHibernateTemplate().save(link);	
@@ -34,6 +37,8 @@ public class FdlDao extends HibernateDaoSupport{
 		Graph graph = new Graph(nodes,links);
 		return graph;
 	}
+	
+	/* La fonction addGraph() va créer la base de données qui sera lue par le script qui va dessiner le graphe */
 	
 	public void addGraph(){
 
@@ -128,7 +133,7 @@ public class FdlDao extends HibernateDaoSupport{
 						}
 					}
 					}
-					/*Algorithme de combinaison */
+					/*Algorithme de combinaison (Cet algorithme lit la liste des auteurs et crée les liens entre les auteurs qui ont écrit le même article) */
 					 Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
 					 Transaction transaction = session.beginTransaction();
 					Query query = 

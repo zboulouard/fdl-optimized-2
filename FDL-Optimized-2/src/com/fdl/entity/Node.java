@@ -14,7 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
-
+/**
+ * Classe DAO qui représente la table Node de la base de données  
+ * */
 
 @Entity
 @Table(name="node")
